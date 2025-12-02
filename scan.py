@@ -42,7 +42,7 @@ def analyze_file(path, vectorizer, model):
         X_tok = vectorizer.transform([tokens]).toarray()
         X = np.hstack([X_tok, np.array([[depth, danger_count]])])
         proba = model.predict_proba(X)[0]
-        p_vuln = float(proba[0])
+        p_vuln = float(proba[1])
         pred = int(model.predict(X)[0])
     except Exception as e:
         return {"file": path, "error": "model error: "+str(e)}
