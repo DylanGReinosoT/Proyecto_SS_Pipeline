@@ -142,7 +142,7 @@ Este proyecto implementa un pipeline completo y automatizado que:
 
 Es un ejemplo práctico de cómo aplicar Seguridad en el Desarrollo de Software utilizando herramientas modernas como GitHub Actions y Machine Learning.
 
-##👤 Autores
+## 👤 Autores
 Proyecto desarrollado para la materia de Desarrollo de Software Seguro Universidad de las Fuerzas Armadas ESPE
 
 * 👨‍💻 Dylan G. Reinoso
