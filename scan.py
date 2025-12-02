@@ -74,7 +74,7 @@ def main():
 
     results = []
     any_vuln = False
-    THRESH = 0.5
+    THRESH = 0.35
 
     for f in files:
         r = analyze_file(f, vectorizer, model)
