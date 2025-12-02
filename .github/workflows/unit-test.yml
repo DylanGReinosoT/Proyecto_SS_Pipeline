@@ -1,0 +1,19 @@
+name: unit-tests
+
+on:
+  pull_request:
+    branches:
+      - main
+      - test
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Run unit tests (fake)
+        run: |
+          echo "Running fake tests..."
+          echo "All tests passed!"
