@@ -1,0 +1,47 @@
+name: security-check
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  security-scan:
+    name: security-check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Get changed .c files
+        id: changes
+        run: |
+          git fetch origin ${{ github.event.pull_request.base.ref }}
+          git fetch origin ${{ github.event.pull_request.head.ref }}
+          git diff --name-only ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} > changed.txt
+          grep -E '\.c$' changed.txt > cfiles.txt || true
+
+      - name: Run scan
+        id: scan
+        run: |
+          if [ ! -s cfiles.txt ]; then
+            echo "0 .c files changed"
+            echo '{"summary":{"files_scanned":0,"vulnerable_found":false},"results":[]}' > result.json
+            exit 0
+          fi
+          xargs -a cfiles.txt python scan.py || true
+
+      - name: Upload result
+        uses: actions/upload-artifact@v4
+        with:
+          name: scan-result
+          path: result.json
