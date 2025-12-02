@@ -108,7 +108,7 @@ Ejemplo de salida:
   "ast_depth": 12,
   "danger_count": 2
 }
-
+```
 Si p_vulnerable ≥ 0.40, el pipeline falla.
 
 🚀 Flujo de Trabajo del Desarrollador
