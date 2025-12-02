@@ -113,7 +113,7 @@ Si los tres checks pasan (✅), el PR puede ser aprobado y mergeado.
 * ✔️ El pipeline fuerza la cultura de "Code Review".
 
 ## 📂 Estructura del Repositorio
-
+```
 Proyecto_SS_Pipeline/
 │
 ├── model/
@@ -131,7 +131,7 @@ Proyecto_SS_Pipeline/
         ├── security-check.yml
         ├── unit-tests.yml
         └── deploy.yml
-
+```
 ## 🏁 Conclusión
 Este proyecto implementa un pipeline completo y automatizado que:
 
